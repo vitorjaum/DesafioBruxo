@@ -1,6 +1,7 @@
 import React from "react";
-import characters from "../../contants/index";
+
 import CardProfile from "../CardProfile";
+import Filter from "../Filter";
 
 const tempArray = [
   {
@@ -38,6 +39,7 @@ const Cards = () => {
 
   return (
     <div style={{ padding: "2% 5%" }}>
+      <Filter />
       <div
         style={{
           display: "flex",

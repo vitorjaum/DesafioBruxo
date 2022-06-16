@@ -1,10 +1,14 @@
 import React from "react";
-import Filter from "../Filter";
+import "./index.css";
+
 const Header = () => {
   return (
-    <header>
-      <h1>PotterDex</h1>
-      <Filter />
+    <header style={{ padding: " 10px 0" }}>
+      <h1
+        style={{ margin: 0, display: "flex", justifyContent: "space-around" }}
+      >
+        PotterDex
+      </h1>
     </header>
   );
 };
