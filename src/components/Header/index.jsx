@@ -3,7 +3,7 @@ import "./index.css";
 
 const Header = () => {
   return (
-    <header style={{ padding: " 10px 0" }}>
+    <header style={{ padding: " 10px 0", backgroundColor: "#ffb84b" }}>
       <h1
         style={{ margin: 0, display: "flex", justifyContent: "space-around" }}
       >

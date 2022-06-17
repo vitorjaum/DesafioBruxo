@@ -1,5 +1,4 @@
 import React from "react";
-
 import CardProfile from "../CardProfile";
 import Filter from "../Filter";
 
@@ -34,11 +33,10 @@ const Cards = () => {
     tempArray.push(newObj);
 
     setCards(newArr);
-    console.log({ tempArray });
   }
 
   return (
-    <div style={{ padding: "2% 5%" }}>
+    <div style={{ padding: "2% 5%", backgroundColor: "rgb(45, 0, 77)" }}>
       <Filter />
       <div
         style={{

@@ -25,7 +25,7 @@ const CardProfile = ({ info }) => {
   }
 
   return (
-    <a style={{ backgroundColor: houseColor, marginRight: "2%" }}>
+    <a style={{ backgroundColor: houseColor, margin: "20px 2.5%" }}>
       <div>
         <img src={image} alt={alt} />
         <p>{name}</p>
