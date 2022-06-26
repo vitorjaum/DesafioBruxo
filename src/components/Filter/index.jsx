@@ -21,10 +21,11 @@ const Filter = () => {
           </select>
           <select className="filterSelect" name="" id="post">
             <option selected value="">
-              Staff or student
+              Ancestry
             </option>
-            <option value="">Students</option>
-            <option value="">Staff</option>
+            <option value="">Half Blood</option>
+            <option value="">Muggleborn</option>
+            <option value="">Pure Blood</option>
           </select>
         </section>
       </nav>

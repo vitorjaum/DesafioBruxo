@@ -5,6 +5,7 @@ const CardProfile = ({ info }) => {
   const image = info.image;
   const house = info.house;
   const alt = `imagem de ${name}`;
+  const condImage = image != "" ? image : "logo192.png";
   let houseColor;
 
   switch (house) {
@@ -25,9 +26,15 @@ const CardProfile = ({ info }) => {
   }
 
   return (
-    <a style={{ backgroundColor: houseColor, margin: "20px 2.5%" }}>
+    <a
+      style={{
+        backgroundColor: houseColor,
+        margin: "20px 2.5%",
+        width: "20%",
+      }}
+    >
       <div>
-        <img src={image} alt={alt} />
+        <img src={condImage} alt={alt} style={{ width: "90%" }} />
         <p>{name}</p>
       </div>
     </a>
