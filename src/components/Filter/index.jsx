@@ -9,23 +9,26 @@ const Filter = () => {
         style={{ padding: "15px", display: "flex", justifyContent: "center" }}
       >
         <section>
-          <select className="filterSelect" id="houses">
-            <option selected value="">
-              Select House
-            </option>
-            <option value="">Gryffindor</option>
-            <option value="">Hufflepuff</option>
-            <option value="">Slytherin</option>
-            <option value="">Ravenclaw</option>
-            <option value="">No House</option>
+          <select className="filterSelect" defaultValue={"NoHouse"} id="houses">
+            <option selected>Select House</option>
+            <option value="Gryffindor">Gryffindor</option>
+            <option value="Hufflepuff">Hufflepuff</option>
+            <option value="Slytherin">Slytherin</option>
+            <option value="Ravenclaw">Ravenclaw</option>
+            <option value="NoHouse">No House</option>
           </select>
-          <select className="filterSelect" name="" id="post">
-            <option selected value="">
+
+          <select
+            className="filterSelect"
+            defaultValue={"ancestry"}
+            id="ancestry"
+          >
+            <option selected value={"ancestry"}>
               Ancestry
             </option>
-            <option value="">Half Blood</option>
-            <option value="">Muggleborn</option>
-            <option value="">Pure Blood</option>
+            <option value="halfBlood">Half Blood</option>
+            <option value="Muggleborn">Muggleborn</option>
+            <option value="pureBlood">Pure Blood</option>
           </select>
         </section>
       </nav>
