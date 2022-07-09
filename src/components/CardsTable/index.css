@@ -1,0 +1,12 @@
+.table {
+  padding: 2% 5%;
+  background-color: rgb(45, 0, 77);
+}
+
+.cards {
+  display: flex;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: space-around;
+}

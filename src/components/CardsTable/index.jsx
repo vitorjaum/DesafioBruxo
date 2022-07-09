@@ -1,7 +1,7 @@
 import React from "react";
 import CardProfile from "../CardProfile";
 import Filter from "../Filter";
-
+import "./index.css";
 let initIdx = 0;
 let newIdx = 10;
 const cardsArr = [];
@@ -29,7 +29,7 @@ const Cards = () => {
         .then((characters) => characters.json())
         .then((array) => {
           cardsArr.push(...array);
-          console.log(cardsArr);
+          console.log("puxado");
           setCards([...cardsArr.slice(0, 10)]);
         });
     } else {
@@ -39,16 +39,9 @@ const Cards = () => {
   };
 
   return (
-    <div style={{ padding: "2% 5%", backgroundColor: "rgb(45, 0, 77)" }}>
+    <div className="table">
       <Filter />
-      <div
-        style={{
-          display: "flex",
-          margin: "0 auto",
-          flexWrap: "wrap",
-        }}
-        id={"card"}
-      >
+      <div className="cards" id={"card"}>
         {cards.map((id) => (
           <CardProfile info={id} />
         ))}

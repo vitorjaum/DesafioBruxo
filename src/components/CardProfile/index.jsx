@@ -29,8 +29,8 @@ const CardProfile = ({ info }) => {
     <a
       style={{
         backgroundColor: houseColor,
-        margin: "20px 1.25vw",
-        width: "20%",
+        margin: 20,
+        marginBottom: 20,
       }}
     >
       <div
@@ -39,10 +39,10 @@ const CardProfile = ({ info }) => {
           flexDirection: "column",
           alignItems: "center",
           paddingTop: "5%",
-          width: "20vw",
+          width: 245,
         }}
       >
-        <img src={condImage} alt={alt} style={{ width: "90%" }} />
+        <img src={condImage} alt={alt} style={{ width: "90%", height: 340 }} />
         <p>{name}</p>
       </div>
     </a>
