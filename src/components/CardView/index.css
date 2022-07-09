@@ -1,0 +1,41 @@
+.cardView {
+  margin: 20px;
+}
+
+.cardItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5%;
+  width: 245px;
+}
+
+.imageCharacters {
+  width: 90%;
+  height: 340px;
+}
+
+.Gryffindor {
+  background-color: #c60000a1;
+}
+
+.Hufflepuff {
+  background-color: #ffff00b5;
+}
+
+.Slytherin {
+  background-color: #008000b5;
+}
+
+.Ravenclaw {
+  background-color: #0505d3c9;
+}
+
+.noHouse {
+  background-color: grey;
+}
+
+.name {
+  font-family: "Pirata One", sans-serif;
+  font-size: 1.3rem;
+}

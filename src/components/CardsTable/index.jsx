@@ -1,5 +1,5 @@
 import React from "react";
-import CardProfile from "../CardProfile";
+import CardView from "../CardView";
 import Filter from "../Filter";
 import "./index.css";
 let initIdx = 0;
@@ -43,7 +43,7 @@ const Cards = () => {
       <Filter />
       <div className="cards" id={"card"}>
         {cards.map((id) => (
-          <CardProfile info={id} />
+          <CardView info={id} />
         ))}
         {/* {
           if(cards.length === 0){
