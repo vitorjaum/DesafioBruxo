@@ -2,54 +2,37 @@ import React from "react";
 import CardView from "../CardView";
 import Filter from "../Filter";
 import "./index.css";
-let initIdx = 0;
+
 let newIdx = 10;
-const cardsArr = [];
-
-// const api = fetch("http://hp-api.herokuapp.com/api/characters")
-//   .then((characters) => characters.json())
-//   .then((characters) => {
-//     cardsArr.push(...characters);
-//     console.log(cardsArr);
-//   });
-// .then((characters) => cardsArr.push(...characters));
-
-// console.log(cardsArr.slice(initIdx, newIdx));
-
-// console.log(characters[3]?.image);
+const globalCards = [];
 
 const Cards = () => {
   const [cards, setCards] = React.useState([]);
-
-  const getCards = () => {};
+  const [cond, setCond] = React.useState("");
 
   const getMoreCards = () => {
-    if (cardsArr.length === 0) {
+    if (globalCards.length === 0) {
       fetch("http://hp-api.herokuapp.com/api/characters")
         .then((characters) => characters.json())
         .then((array) => {
-          cardsArr.push(...array);
+          globalCards.push(...array);
           console.log("puxado");
-          setCards([...cardsArr.slice(0, 10)]);
+          setCards([...globalCards.slice(0, 10)]);
         });
     } else {
       newIdx += 10;
-      setCards([...cardsArr.slice(0, newIdx)]);
+      setCards([...globalCards.slice(0, newIdx)]);
     }
   };
 
   return (
     <div className="table">
-      <Filter />
+      <Filter info={{ globalCards, setCards, cond, setCond }} />
+
       <div className="cards" id={"card"}>
         {cards.map((id) => (
           <CardView info={id} />
         ))}
-        {/* {
-          if(cards.length === 0){
-            console.log(cards)
-          }
-        } */}
       </div>
       <button onClick={getMoreCards}>Exibir Mais...</button>
     </div>

@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 5%;
-  width: 245px;
+  width: 300px;
 }
 
 .imageCharacters {
@@ -37,5 +37,5 @@
 
 .name {
   font-family: "Pirata One", sans-serif;
-  font-size: 1.3rem;
+  font-size: 2rem;
 }

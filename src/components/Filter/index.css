@@ -1,8 +1,6 @@
 .filterSelect {
   border: none;
   height: 30px;
-}
-
-#houses {
-  margin-right: 30px;
+  margin: 0 20px;
+  border-radius: 50px;
 }
