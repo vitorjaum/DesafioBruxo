@@ -9,8 +9,8 @@ const CardView = ({ info }) => {
   const houseColor = house === "" ? "noHouse" : house;
 
   return (
-    <a className={`cardView ${houseColor} style`}>
-      <div className="cardItems">
+    <a>
+      <div className={`cardView ${houseColor}`}>
         <img src={condImage} alt={alt} className="imageCharacters" />
         <p className="name">{name}</p>
       </div>
