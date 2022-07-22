@@ -3,11 +3,11 @@ import "./index.css";
 
 const Header = () => {
   return (
-    <header style={{ padding: " 10px 0", backgroundColor: "#ffb84b" }}>
+    <header style={{ padding: " 10px 0", backgroundColor: "#996e00" }}>
       <h1
         style={{ margin: 0, display: "flex", justifyContent: "space-around" }}
       >
-        PotterDex
+        Desafio Bruxo
       </h1>
     </header>
   );

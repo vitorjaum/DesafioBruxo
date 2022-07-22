@@ -1,0 +1,36 @@
+footer {
+  background-color: black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+footer p {
+  color: #a6a6a6;
+  margin: 2px 20px;
+}
+
+.signature {
+  color: #a6a6a6;
+  margin: auto 0;
+  padding: 10px;
+}
+
+.icon {
+  height: 34px;
+  width: 34px;
+  padding: 10px;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.links p {
+  font-size: 25px;
+  line-height: 1.6;
+}
