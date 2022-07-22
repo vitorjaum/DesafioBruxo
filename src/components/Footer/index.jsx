@@ -29,16 +29,28 @@ const Footer = () => {
       <nav className="links">
         <p>
           Desafio proposto por{" "}
-          <a href="https://github.com/LarissaAzevedo">Larissa Azevedo</a>
+          <a href="https://github.com/LarissaAzevedo" target="_Blank">
+            Larissa Azevedo
+          </a>
         </p>
         <p>
-          <a href="https://github.com/LarissaAzevedo/DesafioBruxo">Desafio</a>
+          <a
+            href="https://github.com/LarissaAzevedo/DesafioBruxo"
+            target="_Blank"
+          >
+            Desafio
+          </a>
         </p>
         <p>
-          <a href="https://github.com/vitorjaum">Repositório do projeto</a>
+          <a href="https://github.com/vitorjaum" target="_Blank">
+            Repositório do projeto
+          </a>
         </p>
         <p>
-          Link da <a href="http://hp-api.herokuapp.com/api/characters">API</a>
+          Link da{" "}
+          <a href="http://hp-api.herokuapp.com/api/characters" target="_Blank">
+            API
+          </a>
         </p>
       </nav>
 
