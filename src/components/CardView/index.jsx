@@ -18,23 +18,27 @@ const CardView = ({ info }) => {
 
   return (
     <div className="cardView">
-      <div className={` cardView-inner ${houseColor}`}>
-        <div className="cardView-back">
-          <div>
-            <p>name: {name}</p>
-            <p>actor: {actor}</p>
-            <p>alternate actors: {alternateActors}</p>
-            <p>ancestry: {ancestry}</p>
-            <p>species: {species}</p>
-            <section>
-              <h3>wand:</h3>
-              <p>core: {wandCore}</p>
-              <p>wand wood: {wandWood}</p>
-              <p>wand lenght: {wandLength}</p>
-            </section>
+      <div className={` cardView-inner `}>
+        <div className={`cardView-back ${houseColor}`}>
+          <div className="charactersData">
+            <p>Name: {name}</p>
+            {actor && <p>Actor: {actor}</p>}
+            {alternateActors.length > 0 && (
+              <p>Alternate actors: {alternateActors}</p>
+            )}
+            {ancestry && <p>Ancestry: {ancestry}</p>}
+            {species && <p>Species: {species}</p>}
+            {wandWood && (
+              <section>
+                <h3>Wand:</h3>
+                {wandCore && <p>Core: {wandCore}</p>}
+                {wandWood && <p>Wand wood: {wandWood}</p>}
+                {wandLength && <p>Wand lenght: {wandLength}</p>}
+              </section>
+            )}
           </div>
         </div>
-        <div className={"cardView-front"}>
+        <div className={`cardView-front ${houseColor}`}>
           <img src={condImage} alt={alt} className="imageCharacters" />
           <p className="name">{name}</p>
         </div>
