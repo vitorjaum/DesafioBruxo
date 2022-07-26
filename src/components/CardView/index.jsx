@@ -29,7 +29,7 @@ const CardView = ({ info }) => {
             {ancestry && <p>Ancestry: {ancestry}</p>}
             {species && <p>Species: {species}</p>}
             {wandWood && (
-              <section>
+              <section className="wandDate">
                 <h3>Wand:</h3>
                 {wandCore && <p>Core: {wandCore}</p>}
                 {wandWood && <p>Wand wood: {wandWood}</p>}
