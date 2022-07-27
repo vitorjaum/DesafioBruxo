@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import "./index.css";
 
 let house;
 let ancestry;
 
 const Filter = ({ info }) => {
-  const { setCards, globalCards } = info;
+  const { setRenderCards, globalCards, setFilteredArr } = info;
 
   function changeArray({ target }) {
     const filteredCards = [];
@@ -15,24 +15,21 @@ const Filter = ({ info }) => {
     if (name === "house") house = value;
     if (name === "ancestry") ancestry = value;
 
-    for (
-      let idx = 0;
-      filteredCards.length < 10 && idx < globalCards.length;
-      idx++
-    ) {
-      if (idx === globalCards.length - 1) setCards(filteredCards);
-
-      if (house !== undefined && ancestry !== undefined) {
+    for (let idx = 0; idx < globalCards.length; idx++) {
+      if (house && ancestry) {
         if (
-          globalCards[idx].ancestry === ancestry &&
-          globalCards[idx].house === house
+          globalCards[idx]?.ancestry === ancestry &&
+          globalCards[idx]?.house === house
         ) {
           filteredCards.push(globalCards[idx]);
-          setCards(filteredCards);
         }
       } else if (globalCards[idx][name] === value) {
         filteredCards.push(globalCards[idx]);
-        setCards(filteredCards);
+      }
+
+      if (idx === globalCards.length - 1) {
+        setRenderCards(filteredCards.slice(0, 10));
+        setFilteredArr(filteredCards);
       }
     }
   }
@@ -49,7 +46,9 @@ const Filter = ({ info }) => {
             name={"house"}
             onChange={changeArray}
           >
-            <option selected>Select House</option>
+            <option selected value={"house"}>
+              Select House
+            </option>
             <option value="Gryffindor">Gryffindor</option>
             <option value="Hufflepuff">Hufflepuff</option>
             <option value="Slytherin">Slytherin</option>

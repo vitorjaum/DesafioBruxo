@@ -8,10 +8,8 @@ const globalCards = [];
 let condCall = true;
 
 const RenderCards = ({ props }) => {
-  const { cards, setCards } = props;
+  const { renderCards, setRenderCards } = props;
 
-  console.log(globalCards.length);
-  console.log(cards);
   if (condCall) {
     condCall = false;
     fetch("http://hp-api.herokuapp.com/api/characters")
@@ -20,30 +18,26 @@ const RenderCards = ({ props }) => {
         globalCards.push(...array);
         console.log(globalCards);
         console.log("puxado");
-        setCards(globalCards.slice(0, 10));
+        setRenderCards(globalCards.slice(0, 10));
       });
   }
-  return cards.map((id) => <CardView info={id} />);
+  return renderCards.map((id) => <CardView info={id} />);
 };
 
 const Cards = () => {
-  const [cards, setCards] = React.useState([]);
-  const [cond, setCond] = React.useState("");
+  const [renderCards, setRenderCards] = React.useState([]);
+  const [filteredArr, setFilteredArr] = React.useState(globalCards);
 
   const getMoreCards = () => {
-    if (globalCards.lengt !== 0) {
-      console.log(globalCards);
-      newIdx += 10;
-      setCards([...globalCards.slice(0, newIdx)]);
-    }
+    newIdx += 10;
+    setRenderCards([...filteredArr.slice(0, newIdx)]);
   };
-  const tag = <p>pinto</p>;
+
   return (
     <div className="table">
-      <Filter info={{ globalCards, setCards, cond, setCond }} />
-
+      <Filter info={{ globalCards, setRenderCards, setFilteredArr }} />
       <div className="cards" id={"card"}>
-        <RenderCards props={{ cards, setCards }} />
+        <RenderCards props={{ renderCards, setRenderCards }} />
       </div>
       <button onClick={getMoreCards}>Exibir Mais...</button>
     </div>
