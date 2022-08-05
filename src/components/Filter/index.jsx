@@ -5,33 +5,54 @@ let house;
 let ancestry;
 
 const Filter = ({ info }) => {
-  const { setRenderCards, globalCards, setFilteredArr } = info;
+  const { setRenderCards, globalCards, setCardsArr } = info;
 
-  function changeArray({ target }) {
-    const filteredCards = [];
-    const name = target.name;
+  function changeHouse({ target }) {
     const value = target.value;
+    const name = target.name;
+    let newCardsArr = [];
 
-    if (name === "house") house = value;
-    if (name === "ancestry") ancestry = value;
+    house = value;
 
-    for (let idx = 0; idx < globalCards.length; idx++) {
-      if (house && ancestry) {
-        if (
-          globalCards[idx]?.ancestry === ancestry &&
-          globalCards[idx]?.house === house
-        ) {
-          filteredCards.push(globalCards[idx]);
-        }
-      } else if (globalCards[idx][name] === value) {
-        filteredCards.push(globalCards[idx]);
+    if (value === name) {
+      newCardsArr = globalCards;
+      if (ancestry !== undefined) {
+        newCardsArr = newCardsArr.filter((card) => card.ancestry === ancestry);
       }
+    } else {
+      newCardsArr = globalCards.filter((card) => card.house === house);
+      if (ancestry !== undefined)
+        newCardsArr = newCardsArr.filter((card) => card.ancestry === ancestry);
+    }
 
-      if (idx === globalCards.length - 1) {
-        setRenderCards(filteredCards.slice(0, 10));
-        setFilteredArr(filteredCards);
+    console.log(newCardsArr);
+    setCardsArr(newCardsArr);
+
+    setRenderCards(newCardsArr.slice(0, 10));
+  }
+
+  function changeAncestry({ target }) {
+    const value = target.value;
+    const name = target.name;
+    let newCardsArr = [];
+
+    ancestry = value;
+
+    if (value === name) {
+      newCardsArr = globalCards;
+      if (house !== undefined) {
+        newCardsArr = newCardsArr.filter((card) => card.house === house);
+      }
+    } else {
+      newCardsArr = globalCards.filter((card) => card.ancestry === ancestry);
+      console.log(house);
+      if (house !== undefined) {
+        newCardsArr = newCardsArr.filter((card) => card.house === house);
+        console.log({ newCardsArr });
       }
     }
+    setCardsArr(newCardsArr);
+    setRenderCards(newCardsArr.slice(0, 10));
   }
 
   return (
@@ -44,7 +65,7 @@ const Filter = ({ info }) => {
           <select
             className="filterSelect"
             name={"house"}
-            onChange={changeArray}
+            onChange={changeHouse}
           >
             <option selected value={"house"}>
               Select House
@@ -59,7 +80,7 @@ const Filter = ({ info }) => {
           <select
             className="filterSelect"
             name="ancestry"
-            onChange={changeArray}
+            onChange={changeAncestry}
           >
             <option selected value={"ancestry"}>
               Ancestry

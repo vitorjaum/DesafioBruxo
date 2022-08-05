@@ -3,8 +3,8 @@ import CardView from "../CardView";
 import Filter from "../Filter";
 import "./index.css";
 
-let newIdx = 10;
 const globalCards = [];
+let newIdx = 10;
 let condCall = true;
 
 const RenderCards = ({ props }) => {
@@ -26,16 +26,16 @@ const RenderCards = ({ props }) => {
 
 const Cards = () => {
   const [renderCards, setRenderCards] = React.useState([]);
-  const [filteredArr, setFilteredArr] = React.useState(globalCards);
+  const [cardsArr, setCardsArr] = React.useState(globalCards);
 
   const getMoreCards = () => {
     newIdx += 10;
-    setRenderCards([...filteredArr.slice(0, newIdx)]);
+    setRenderCards([...cardsArr.slice(0, newIdx)]);
   };
 
   return (
     <div className="table">
-      <Filter info={{ globalCards, setRenderCards, setFilteredArr }} />
+      <Filter info={{ globalCards, setRenderCards, setCardsArr }} />
       <div className="cards" id={"card"}>
         <RenderCards props={{ renderCards, setRenderCards }} />
       </div>
