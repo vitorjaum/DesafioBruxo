@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/desafio-bruxo/static/css/main.9ae24ec2.css",
-    "main.js": "/desafio-bruxo/static/js/main.6520b521.js",
-    "static/js/787.e6ebbf55.chunk.js": "/desafio-bruxo/static/js/787.e6ebbf55.chunk.js",
-    "static/media/logo.svg": "/desafio-bruxo/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "static/media/instagram.svg": "/desafio-bruxo/static/media/instagram.5c04d9d79e587c5df5710dd65650248d.svg",
-    "static/media/github.svg": "/desafio-bruxo/static/media/github.1329e87f31a1852bb140d57165cc1200.svg",
-    "index.html": "/desafio-bruxo/index.html",
-    "static/media/linkedin.svg": "/desafio-bruxo/static/media/linkedin.9533afc5cbaec6810a2920551aefb20c.svg",
-    "static/media/twitch.svg": "/desafio-bruxo/static/media/twitch.a141b8bfec80be7800fc4b69d8febbd1.svg",
-    "main.9ae24ec2.css.map": "/desafio-bruxo/static/css/main.9ae24ec2.css.map",
-    "main.6520b521.js.map": "/desafio-bruxo/static/js/main.6520b521.js.map",
-    "787.e6ebbf55.chunk.js.map": "/desafio-bruxo/static/js/787.e6ebbf55.chunk.js.map"
+    "main.css": "/DesafioBruxo/static/css/main.9ae24ec2.css",
+    "main.js": "/DesafioBruxo/static/js/main.3e14b50c.js",
+    "static/js/787.e6ebbf55.chunk.js": "/DesafioBruxo/static/js/787.e6ebbf55.chunk.js",
+    "static/media/logo.svg": "/DesafioBruxo/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/instagram.svg": "/DesafioBruxo/static/media/instagram.5c04d9d79e587c5df5710dd65650248d.svg",
+    "static/media/github.svg": "/DesafioBruxo/static/media/github.1329e87f31a1852bb140d57165cc1200.svg",
+    "index.html": "/DesafioBruxo/index.html",
+    "static/media/linkedin.svg": "/DesafioBruxo/static/media/linkedin.9533afc5cbaec6810a2920551aefb20c.svg",
+    "static/media/twitch.svg": "/DesafioBruxo/static/media/twitch.a141b8bfec80be7800fc4b69d8febbd1.svg",
+    "main.9ae24ec2.css.map": "/DesafioBruxo/static/css/main.9ae24ec2.css.map",
+    "main.3e14b50c.js.map": "/DesafioBruxo/static/js/main.3e14b50c.js.map",
+    "787.e6ebbf55.chunk.js.map": "/DesafioBruxo/static/js/787.e6ebbf55.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9ae24ec2.css",
-    "static/js/main.6520b521.js"
+    "static/js/main.3e14b50c.js"
   ]
 }
