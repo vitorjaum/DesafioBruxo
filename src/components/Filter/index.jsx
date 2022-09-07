@@ -1,59 +1,58 @@
 import React from "react";
 import "./index.css";
 
-let house;
-let ancestry;
+const filterParams = { ancestry: "ALL", house: "ALL" };
 
 const Filter = ({ info }) => {
-  const { setRenderCards, globalCards, setCardsArr } = info;
+  const { globalCards, setCurrentCards, setCountCards } = info;
 
-  function changeHouse({ target }) {
-    const value = target.value;
-    const name = target.name;
-    let newCardsArr = [];
-
-    house = value;
-
-    if (value === name) {
-      newCardsArr = globalCards;
-      if (ancestry !== undefined) {
-        newCardsArr = newCardsArr.filter((card) => card.ancestry === ancestry);
-      }
+  function checkCards(cards, parameter, value) {
+    if (value.toUpperCase() === "ALL") {
+      return cards;
     } else {
-      newCardsArr = globalCards.filter((card) => card.house === house);
-      if (ancestry !== undefined)
-        newCardsArr = newCardsArr.filter((card) => card.ancestry === ancestry);
+      return cards.filter(
+        (card) => card[parameter].toUpperCase() === value.toUpperCase()
+      );
     }
-
-    console.log(newCardsArr);
-    setCardsArr(newCardsArr);
-
-    setRenderCards(newCardsArr.slice(0, 10));
   }
 
-  function changeAncestry({ target }) {
-    const value = target.value;
+  const changeCards = ({ target }) => {
     const name = target.name;
-    let newCardsArr = [];
+    const value = target.value;
 
-    ancestry = value;
+    filterParams[name] = value;
 
-    if (value === name) {
-      newCardsArr = globalCards;
-      if (house !== undefined) {
-        newCardsArr = newCardsArr.filter((card) => card.house === house);
-      }
-    } else {
-      newCardsArr = globalCards.filter((card) => card.ancestry === ancestry);
-      console.log(house);
-      if (house !== undefined) {
-        newCardsArr = newCardsArr.filter((card) => card.house === house);
-        console.log({ newCardsArr });
-      }
-    }
-    setCardsArr(newCardsArr);
-    setRenderCards(newCardsArr.slice(0, 10));
-  }
+    const houseCards = checkCards(globalCards, "house", filterParams.house);
+    const filterCards = checkCards(
+      houseCards,
+      "ancestry",
+      filterParams.ancestry
+    );
+
+    setCountCards(10);
+    setCurrentCards(filterCards);
+  };
+
+  const housesParams = [
+    { value: "ALL", txt: "Select House" },
+    { value: "Gryffindor", txt: "Gryffindor" },
+    { value: "Hufflepuff", txt: "Hufflepuff" },
+    { value: "Slytherin", txt: "Slytherin" },
+    { value: "Ravenclaw", txt: "Ravenclaw" },
+    { value: "", txt: "Homeless" },
+  ];
+
+  const ancestryParams = [
+    { value: "ALL", txt: "Select Ancestry" },
+    { value: "half-blood", txt: "half-blood" },
+    { value: "muggleborn", txt: "muggleborn" },
+    { value: "muggle", txt: "muggle" },
+    { value: "pure-blood", txt: "pure-blood" },
+    { value: "squib", txt: "squib" },
+    { value: "half-veela", txt: "half-veela" },
+    { value: "quarter-veela", txt: "quarter-veela" },
+    { value: "", txt: "Unspecified Ancestry" },
+  ];
 
   return (
     <>
@@ -65,33 +64,27 @@ const Filter = ({ info }) => {
           <select
             className="filterSelect"
             name={"house"}
-            onChange={changeHouse}
+            onChange={changeCards}
+            defaultValue={"ALL"}
           >
-            <option selected value={"house"}>
-              Select House
-            </option>
-            <option value="Gryffindor">Gryffindor</option>
-            <option value="Hufflepuff">Hufflepuff</option>
-            <option value="Slytherin">Slytherin</option>
-            <option value="Ravenclaw">Ravenclaw</option>
-            <option value="">No House</option>
+            {housesParams.map((param, idx) => (
+              <option key={idx} value={param.value}>
+                {param.txt}
+              </option>
+            ))}
           </select>
 
           <select
             className="filterSelect"
             name="ancestry"
-            onChange={changeAncestry}
+            onChange={changeCards}
+            defaultValue={"ALL"}
           >
-            <option selected value={"ancestry"}>
-              Ancestry
-            </option>
-            <option value="half-blood">Half Blood</option>
-            <option value="muggleborn">Muggleborn</option>
-            <option value="muggle">Muggle</option>
-            <option value="pure-blood">Pure Blood</option>
-            <option value="squib">Squib</option>
-            <option value="half-veela">Half-veela</option>
-            <option value="quarter-veela">Quarter-veela</option>
+            {ancestryParams.map((param, idx) => (
+              <option key={idx} value={param.value}>
+                {param.txt}
+              </option>
+            ))}
           </select>
         </form>
       </nav>

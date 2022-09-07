@@ -1,45 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CardView from "../CardView";
 import Filter from "../Filter";
 import "./index.css";
 
-const globalCards = [];
-let newIdx = 10;
-let condCall = true;
-
-const RenderCards = ({ props }) => {
-  const { renderCards, setRenderCards } = props;
-
-  if (condCall) {
-    condCall = false;
-    fetch("http://hp-api.herokuapp.com/api/characters")
-      .then((characters) => characters.json())
-      .then((array) => {
-        globalCards.push(...array);
-        console.log(globalCards);
-        console.log("puxado");
-        setRenderCards(globalCards.slice(0, 10));
-      });
-  }
-  return renderCards.map((id) => <CardView info={id} />);
-};
+let globalCards = [];
 
 const Cards = () => {
-  const [renderCards, setRenderCards] = React.useState([]);
-  const [cardsArr, setCardsArr] = React.useState(globalCards);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(null);
+  const [currentCards, setCurrentCards] = useState([]);
+  const [countCards, setCountCards] = useState(10);
 
-  const getMoreCards = () => {
-    newIdx += 10;
-    setRenderCards([...cardsArr.slice(0, newIdx)]);
-  };
+  useEffect(() => {
+    fetch("https://hp-api.herokuapp.com/api/characters")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setCurrentCards(result);
+          globalCards = result;
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
+  }, []);
 
   return (
     <div className="table">
-      <Filter info={{ globalCards, setRenderCards, setCardsArr }} />
+      <Filter info={{ globalCards, setCurrentCards, setCountCards }} />
       <div className="cards" id={"card"}>
-        <RenderCards props={{ renderCards, setRenderCards }} />
+        {!isLoaded ? (
+          <p>loading...</p>
+        ) : (
+          currentCards.map(
+            (card, idx) =>
+              idx < countCards && <CardView info={card} key={idx} />
+          )
+        )}
       </div>
-      <button onClick={getMoreCards}>Exibir Mais...</button>
+      <button onClick={() => setCountCards(countCards + 10)}>
+        Exibir Mais...
+      </button>
     </div>
   );
 };
