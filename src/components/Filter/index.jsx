@@ -4,16 +4,20 @@ import "./index.css";
 const filterParams = { ancestry: "ALL", house: "ALL" };
 
 const Filter = ({ info }) => {
-  const { globalCards, setCurrentCards, setCountCards } = info;
+  const { APIData, setCurrentCards, setCountCards } = info;
 
-  function checkCards(cards, parameter, value) {
-    if (value.toUpperCase() === "ALL") {
-      return cards;
-    } else {
-      return cards.filter(
-        (card) => card[parameter].toUpperCase() === value.toUpperCase()
-      );
+  function dataFilter() {
+    let cardArray = APIData;
+    let tempArray;
+    for (const key in filterParams) {
+      if (filterParams[key].toUpperCase() !== "ALL") {
+        tempArray = cardArray.filter(
+          (card) => card[key].toUpperCase() === filterParams[key].toUpperCase()
+        );
+        cardArray = tempArray;
+      }
     }
+    return cardArray;
   }
 
   const changeCards = ({ target }) => {
@@ -22,15 +26,10 @@ const Filter = ({ info }) => {
 
     filterParams[name] = value;
 
-    const houseCards = checkCards(globalCards, "house", filterParams.house);
-    const filterCards = checkCards(
-      houseCards,
-      "ancestry",
-      filterParams.ancestry
-    );
+    const filteredData = dataFilter();
 
     setCountCards(10);
-    setCurrentCards(filterCards);
+    setCurrentCards(filteredData);
   };
 
   const housesParams = [

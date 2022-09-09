@@ -3,7 +3,7 @@ import CardView from "../CardView";
 import Filter from "../Filter";
 import "./index.css";
 
-let globalCards = [];
+let APIData = [];
 
 const Cards = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,7 +18,7 @@ const Cards = () => {
         (result) => {
           setIsLoaded(true);
           setCurrentCards(result);
-          globalCards = result;
+          APIData = result;
         },
         (error) => {
           setIsLoaded(true);
@@ -29,7 +29,7 @@ const Cards = () => {
 
   return (
     <div className="table">
-      <Filter info={{ globalCards, setCurrentCards, setCountCards }} />
+      <Filter info={{ APIData, setCurrentCards, setCountCards }} />
       <div className="cards" id={"card"}>
         {!isLoaded ? (
           <p>loading...</p>
