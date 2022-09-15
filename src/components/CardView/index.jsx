@@ -1,46 +1,51 @@
 import React from "react";
 import "./index.css";
+import defaultImage from "../../assets/defaultImage.jpg";
+
 const CardView = ({ info }) => {
   const name = info.name;
   const image = info.image;
   const house = info.house;
   const actor = info.actor;
   const ancestry = info.ancestry;
-  const species = info.species;
   const patronus = info.patronus;
   const alternateActors = info.alternate_actors;
   const wandWood = info.wand.wood;
   const wandCore = info.wand.core;
-  const wandLength = info.wand.lengt;
-  const alt = `imagem de ${name}`;
-  const condImage = image != "" ? image : "logo192.png";
+  const wandLength = info.wand.length;
+  const condImage = image != "" ? `url(${image})` : `url(${defaultImage})`;
   const houseColor = house === "" ? "noHouse" : house;
 
   return (
-    <div className="cardView">
-      <div className={` cardView-inner `}>
-        <div className={`cardView-back ${houseColor}`}>
-          <div className="charactersData">
-            <p>Name: {name}</p>
-            {actor && <p>Actor: {actor}</p>}
-            {alternateActors.length > 0 && (
-              <p>Alternate actors: {alternateActors}</p>
-            )}
-            {ancestry && <p>Ancestry: {ancestry}</p>}
-            {species && <p>Species: {species}</p>}
-            {wandWood && (
-              <section className="wandDate">
-                <h3>Wand:</h3>
-                {wandCore && <p>Core: {wandCore}</p>}
-                {wandWood && <p>Wand wood: {wandWood}</p>}
-                {wandLength && <p>Wand lenght: {wandLength}</p>}
-              </section>
-            )}
+    <div className={`flip-card`}>
+      <div className="flip-card-inner">
+        <div
+          style={{
+            backgroundImage: condImage,
+          }}
+          className={`flip-card-front`}
+          title={`image of ${name}`}
+        >
+          <div className={`nameContainer ${houseColor}`}>
+            <p className={`characterName`}>{name}</p>
           </div>
         </div>
-        <div className={`cardView-front ${houseColor}`}>
-          <img src={condImage} alt={alt} className="imageCharacters" />
-          <p className="name">{name}</p>
+        <div className={`flip-card-back`}>
+          <h2>{house !== "" ? house : "Homeless"}</h2>
+          <div className="characterInfos">
+            {actor && <p>actor: {actor}</p>}
+            {alternateActors[0] && <p>alternate_actors: {alternateActors}</p>}
+            {ancestry && <p>ancestry: {ancestry}</p>}
+            {patronus && <p>patronus: {patronus}</p>}
+            {wandWood && (
+              <div className="wandCard">
+                <h2>Wand</h2>
+                {wandWood && <p>wood: {wandWood}</p>}
+                {wandCore && <p>core: {wandCore}</p>}
+                {wandLength && <p>length: {wandLength}</p>}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

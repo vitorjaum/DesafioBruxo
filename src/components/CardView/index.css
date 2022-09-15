@@ -1,75 +1,84 @@
-.cardView {
+.flip-card {
+  background-color: transparent;
+  width: 280px;
+  height: 350px;
   perspective: 1000px;
-  box-sizing: border-box;
-  margin: 2.5% 15px;
-  width: 270px;
 }
 
-.cardView .cardView-inner {
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
   transition: transform 0.5s;
+  border: 1px solid #f1f1f1;
   transform-style: preserve-3d;
 }
 
-.cardView:hover .cardView-inner {
+.flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-.cardView-front {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  position: inherit;
-  flex-direction: column;
-  align-items: center;
-  border-radius: inherit;
-  border: 7px solid black;
-  border-radius: 10px;
-}
-
-.cardView-back {
-  width: 100%;
-  height: 100%;
-  display: flex;
+.flip-card-front,
+.flip-card-back {
   position: absolute;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 10px;
-  border: 7px solid black;
-  transform: rotateY(180deg);
-}
-
-.cardView-back,
-.cardView-front {
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
 }
 
-.charactersData {
-  display: flex;
-  flex-direction: column;
-  background-color: beige;
-  height: 90%;
-  width: 90%;
-  border-radius: 10px;
+/* card front */
+.flip-card-front {
+  background-color: black;
+  color: black;
+  background-size: cover;
 }
 
-.charactersData p {
-  font-size: 20px;
-  margin: 1px;
-  line-height: 1.5;
-}
-
-.imageCharacters {
-  height: 340px;
+.characterImage {
+  height: 100%;
   width: 100%;
 }
 
-.name {
-  font-family: "Pirata One", sans-serif;
-  font-size: 2rem;
+.characterName {
+  margin: auto;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: "Pirata One";
 }
 
-.wandDate p {
-  margin: 1px;
+.nameContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+}
+
+/* card back */
+.flip-card-back {
+  color: black;
+  transform: rotateY(180deg);
+  background-color: #f3a329;
+}
+
+.characterInfos {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.characterInfos p {
+  margin: 0;
+}
+.wandCard {
+  width: 80%;
+  position: absolute;
+  top: 60%;
+}
+
+.wandCard h2 {
+  border-bottom: 2px solid black;
+  margin-bottom: 10px;
 }
 
 /* house color */
