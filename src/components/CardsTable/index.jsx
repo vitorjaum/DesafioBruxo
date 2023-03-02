@@ -12,7 +12,7 @@ const Cards = () => {
   const [countCards, setCountCards] = useState(10);
 
   useEffect(() => {
-    fetch("https://hp-api.herokuapp.com/api/characters")
+    fetch("https://hp-api.onrender.com/api/characters")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -39,10 +39,15 @@ const Cards = () => {
               idx < countCards && <CardView info={card} key={idx} />
           )
         )}
+        <div className="showMore">
+          <button
+            className="showMore-btn"
+            onClick={() => setCountCards(countCards + 10)}
+          >
+            Exibir Mais...
+          </button>
+        </div>
       </div>
-      <button onClick={() => setCountCards(countCards + 10)}>
-        Exibir Mais...
-      </button>
     </div>
   );
 };
